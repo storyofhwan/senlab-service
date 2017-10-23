@@ -65,6 +65,8 @@ define('NONCE_SALT',       'put your unique phrase here');
  */
 $table_prefix  = 'wp_';
 
+
+define( 'WP_HOME', 'http://wordpress.dev' );
 /**
  * For developers: WordPress debugging mode.
  *
@@ -78,7 +80,11 @@ $table_prefix  = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', true);
+//define('WP_DEBUG_LOG',true);
+//define('WP_DEBUG_DISPLAY',false);
 define('SCRIPT_DEBUG', true);
+define( 'SAVEQUERIES', true );
+
 
 /* That's all, stop editing! Happy blogging. */
 

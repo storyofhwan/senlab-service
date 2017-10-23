@@ -1,0 +1,8 @@
+<?php
+/*
+title: 관심분야
+Capability: edit_posts
+description: 관심분야
+Role: administrator
+Taxonomy: category
+*/
