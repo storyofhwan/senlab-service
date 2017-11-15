@@ -10,3 +10,5 @@ License:
 Text Domain: senlab
 */
 
+require_once(__DIR__ . '/vendor/autoload.php');
+require_once(__DIR__ . '/app/senMatchingRate.php');

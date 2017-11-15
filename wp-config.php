@@ -80,8 +80,8 @@ define( 'WP_HOME', 'http://wordpress.dev' );
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', true);
-//define('WP_DEBUG_LOG',true);
-//define('WP_DEBUG_DISPLAY',false);
+define('WP_DEBUG_LOG',true);
+define('WP_DEBUG_DISPLAY',false);
 define('SCRIPT_DEBUG', true);
 define( 'SAVEQUERIES', true );
 

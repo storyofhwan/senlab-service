@@ -58,3 +58,22 @@ piklist('field',[
 		]
 	]
 ]);
+
+
+piklist('field',[
+  'type' => 'checkbox',
+  'field' => 'c_recruiting_type',
+  'label' => '채용유형',
+  'choices' => piklist(get_terms(array(
+    'taxonomy' => 'recruiting_type',
+    'hide_empty' => false
+    )),
+    array(
+      'term_id',
+      'name'
+    )
+  ),
+  'attributes' => [
+    'multiple' => 'multiple'
+  ]
+]);
