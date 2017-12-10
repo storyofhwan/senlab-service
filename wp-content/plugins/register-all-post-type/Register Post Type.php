@@ -36,7 +36,7 @@ add_action('init',function(){
 		'has_archive'			=> false,
 		'capability_type'		=> 'post',
 		'menu_position'			=> 6,
-		'supports'				=> ['title']
+		'supports'				=> ['title', 'author', 'thumbnail']
 	];
 
 	//custom post type [talent] 추가
@@ -79,7 +79,7 @@ add_action('init',function(){
 		'has_archive'			=> false,
 		'capability_type'		=> 'post',
 		'menu_position'			=> 7,
-		'supports'				=> ['title']
+		'supports'				=> ['title', 'thumbnail']
 	];
 
 	register_post_type('career',$arg);
@@ -87,11 +87,8 @@ add_action('init',function(){
 	//[career]의 child post type 추가
 	$lists = \childPostType\listChild::$careerChild;
 
-	foreach($lists as $list){
-		$name = $list[0];
-		$slug = $list[1];
-
-		$cpt = new \childPostType\setChild($name, $slug, 'career');
+	foreach($lists as $field => $label){
+		$cpt = new \childPostType\setChild($label, $field, 'career');
 		$cpt -> addPostType();
 	}
 });

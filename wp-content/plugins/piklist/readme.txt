@@ -1,9 +1,9 @@
 === PIKLIST | Rapid development framework ===
 Contributors: piklist, p51labs, sbruner, jason_the_adams
-Tested up to: 4.7
+Tested up to: 4.9
 Requires at least: 4.0
-Stable tag: 0.9.9.12
-Donate link: http://piklist.com/get-involved/
+Stable tag: 0.9.9.13
+Donate link: https://piklist.com/get-involved/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,11 +29,11 @@ Piklist is a rapid development framework for WordPress that will let you concent
 *   Conditionally show fields (or their values), based on Post Status and/or User Role.
 *   Define Custom Post Statuses
 *   Relate Post-to-Posts.
-*   <a href="http://piklist.com">and more...</a>
+*   <a href="https://piklist.com">and more...</a>
 
 
 = LEARN MORE =
-*   <a href="http://piklist.com/user-guide/">Piklist User Guide</a>
+*   <a href="https://piklist.com/user-guide/">Piklist User Guide</a>
 
 = Customize everything in WordPress =
 *   Post Types
@@ -141,6 +141,11 @@ Code-based frameworks also allows you to version control your code, which is ver
 4. Ask questions on our <a href="https://piklist.com/support/">Support Forum</a>. (We love hearing from our users)
 
 == Changelog ==
+
+= 0.9.9.13 =
+Release Date: November 20, 2017
+
+* UPDATE: updated all references to http to https
 
 = 0.9.9.12 =
 Release Date: April 5, 2017

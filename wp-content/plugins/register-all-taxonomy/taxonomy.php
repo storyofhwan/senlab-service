@@ -7,20 +7,27 @@ class listTaxonomy{
 	const R = 'recruiting';
 	
 	public static $like_category = [
-		['department','학교 및 학과',self::T],
+		['department','학과',self::T],
 		['major','전공 분류', [self::T,self::C]]
 	];
 
 	public static $like_tag = [
+		['school','학교',self::T],
 		['career_type','진로 유형', self::C],
 		['recruiting_type','채용 유형',self::R],
 		['degree','학위 분류',self::T],
 		['location','지역 분류',self::C],
-		['branch','연구 분야',[self::T,self::C]]
+		['branch','연구 분야',[self::T,self::C]],
+		['welfare','복지',self::C]	
 	];
 }
 
 class listTerms{
+	private static $school = [
+		'snu',
+		'postech',
+		'kaist'
+	];
 	private static $department = [
 		'snu' => [
 			'수리과학','통계학','물리학','화학','생명과학','지구환경과학','수학교육','과학교육','식물생산과학','산림과학','농생명공학','바이오시스템소재학','생태조경','지역시스템공학','농산업교육','식품영양학','의류학','간호학','약학','천문학','뇌인지과학','생물물리 및 화학생물학','바이오모듈레이션','건설환경공학','기계공학','우주항공공학','산업공학','조선해양공학','에너지시스템공학','건축학','멀티스케일기계설계','하이브리드재료','에너지환경화학융합기술'],
@@ -72,14 +79,35 @@ class listTerms{
 		'제주',
 		'해외'
 	];
+	private static $welfare = [
+		"사택,기숙사",
+		"주택 대출",
+		"통근버스/교통비/유류비",
+		"육아 보육 지원,어린이집 운영",
+		"학자금 지원",
+		"의료비 지원",
+		"휴양시설, 콘도",
+		"refresh 하계,정기 휴가 제도",
+		"기념품 선물 / 휴가비",
+		"직원할인/복지포인트",
+		"구내식당 / 식대지원",
+		"동호회지원",
+		"각종수당/축하금",
+		"장기,우수직원포상",
+		"성과급,인센티브"
+
+
+	];
 	public static function getTermList($taxonomy){
 		switch($taxonomy){
+			case 'school': $term_list = self::$school; break;
 			case 'department': $term_list = self::$department; break;
 			case 'major': $term_list = self::$major; break;
 			case 'career_type': $term_list =  self::$career_type; break;
 			case 'recruiting_type': $term_list =  self::$recruiting_type; break;
 			case 'degree': $term_list =  self::$degree; break;
 			case 'location': $term_list =  self::$location; break;
+			case 'welfare' : $term_list = self::$welfare; break;
 			default: return 0;
 		}
 		return $term_list;

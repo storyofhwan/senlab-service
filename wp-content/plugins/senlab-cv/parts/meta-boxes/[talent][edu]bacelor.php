@@ -33,7 +33,7 @@ piklist('field',[
 			'field' => 'bac_grade_full',
 			'label' => '만점',
 			'choices' => [
-				'4.5','4,3','4,0'
+				'4.3' => '4.3','4.5' => '4.5'
 			],
 			'columns'=> 1]
 	]
@@ -54,7 +54,8 @@ piklist('field',[
 			'field' => 'bac_ent_sem',
 			'label' => '학기',
 			'choices' => [
-				'3월','9월'
+				3 => '3월',
+				9 => '9월'
 			],
 			'columns'=> 1]
 	]
@@ -75,7 +76,8 @@ piklist('field',[
 			'field' => 'bac_gradu_sem',
 			'label' => '학기',
 			'choices' => [
-				'2월','8월'
+				2 => '2월',
+				8 => '8월'
 			],
 			'columns'=> 1]
 	]

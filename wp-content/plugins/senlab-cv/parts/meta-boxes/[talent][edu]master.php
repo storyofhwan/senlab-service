@@ -10,9 +10,10 @@ piklist('field',[
 	'type' => 'radio',
 	'field' => 'mas_univ_name',
 	'label' => '학교',
-	'choices' => [
-		'snu', 'postech', 'kaist'
-	]
+	'choices' => senlab_cv_get_terms_name('school'),
+  	'attributes' => array(
+  		'wrapper_class' => 	'text-uppercase'
+    )
 ]);
 
 piklist('field',[
@@ -29,6 +30,7 @@ piklist('field',[
 
 piklist('field',[
 	'type' => 'group',
+	'scope' => 'post_meta',
 	'field' => 'mas_grade',
 	'label' => '학점',
 	'fields' => [
@@ -36,18 +38,17 @@ piklist('field',[
 			'type' => 'text',
 			'field' => 'mas_grade_my',
 			'label' => '평균 학점',
-			'columns' => 2],
+			'columns' => 4],
 		[
-			'type'=> 'select',
-			'field' => ' mas_grade_full',
+			'type'=> 'radio',
+			'field' => 'mas_grade_full',
 			'label' => '만점',
 			'choices' => [
-				'4.5','4,3','4,0'
+				'4.3' => '4.3','4.5' => '4.5'
 			],
-			'columns'=> 1]
+			'columns'=> 2]
 	]
 ]);
-
 piklist('field',[
 	'type' => 'group',
 	'field' => 'mas_ent',
@@ -57,15 +58,17 @@ piklist('field',[
 			'type' => 'text',
 			'field' => 'mas_ent_year',
 			'label' => '입학 연도',
-			'columns' => 2],
+			'columns' => 4],
 		[
-			'type'=> 'select',
+			'type'=> 'radio',
 			'field' => 'mas_ent_sem',
 			'label' => '학기',
+			'list' => false,
 			'choices' => [
-				'3월','9월'
+				3 => '3월',
+				9 => '9월'
 			],
-			'columns'=> 1]
+			'columns'=> 2]
 	]
 ]);
 
@@ -78,15 +81,17 @@ piklist('field',[
 			'type' => 'text',
 			'field' => 'mas_gradu_year',
 			'label' => '졸업(예상) 연도',
-			'columns' => 2],
+			'columns' => 4],
 		[
-			'type'=> 'select',
+			'type'=> 'radio',
 			'field' => 'mas_gradu_sem',
 			'label' => '학기',
+			'list' => false,
 			'choices' => [
-				'2월','8월'
+				2 => '2월',
+				8 => '8월'
 			],
-			'columns'=> 1]
+			'columns'=> 2]
 	]
 ]);
 

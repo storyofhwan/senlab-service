@@ -4,7 +4,6 @@ Title: 인턴 및 직장 경력 정보
 Post Type: exp_work
 */
 
-//직책, 회사, 기간, 설명
 
 piklist('field', [
 	'type' => 'text',
@@ -21,16 +20,59 @@ piklist('field', [
 
 piklist('field', [
 	'type' => 'text',
+	'field' => 'location',
+	'label' => '지역'
+]);
+
+$years =[];
+for($i = date("Y"); $i > 1970; $i--){
+	$years[$i] = $i.'년';
+}
+
+$months = [];
+for($i = 1; $i < 13; $i ++){
+	$months[$i] = $i.'월';
+}
+
+piklist('field',[
+	'type' => 'group',
 	'field' => 'period',
-	'label' => '근무기간'
+	'label' => '근무기간',
+	'fields' => [
+		[
+			'type' => 'select',
+			'field' => 'period_start_year',
+			'columns' => 6,
+			'choices' => $years,
+		],
+		[
+			'type' => 'select',
+			'field' => 'period_end_year',
+			'columns' => 6,
+			'choices' => $years,
+		],
+		[
+			'type' => 'select',
+			'field' => 'period_start_month',
+			'columns' => 6,
+			'choices' => $months,
+		],
+		[
+			'type' => 'select',
+			'field' => 'period_end_month',
+			'columns' => 6,
+			'choices' => $months,
+		]
+
+	]
 ]);
 
 piklist('field', [
 	'type' => 'textarea',
 	'field' => 'description',
 	'label' => '설명',
+	'column' => 10,
 	'attributes' => [
-		'rows' => 10,
 		'cols' => 80
 	]
 ]);

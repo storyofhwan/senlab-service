@@ -1,24 +1,24 @@
 <?php
-namespace senMatchingRate\Post
+namespace senMatchingRate\Post;
 
 class Career{
 	
-	private $user_id;
+	public $user_id;
 
-	private $id;
+	public $id;
 
-	private $type;
+	public $type;
 
-	private $major;
-	private $location;
-	private $salary;
+	public $major;
+	public $location;
+	public $salary;
 
-	private $branch;
+	public $branch;
 
-	private $welfare;
+	public $welfare;
 
-	public function __constructor($career_id){
-		$this->id = $talent_id;
+	public function __construct($career_id){
+		$this->id = $career_id;
 	}
 
 }

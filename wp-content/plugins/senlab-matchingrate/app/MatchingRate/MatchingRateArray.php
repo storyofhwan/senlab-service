@@ -7,15 +7,15 @@ class MatchingRateArray{
 
 	private $matchingRateArray;
 
-	public function __constructor($talent_id){
+	public function __construct($talent_id){
 		$this->talent_id = $talent_id;
 		$this->setMatchingRateArray();
 	}
 
 	private function setMatchingRateArray(){
-		$matching_rate_array =  get_post_meta($talent_id, 'matching_rate_array',true);
+		$matching_rate_array =  get_post_meta($this->talent_id, 'matching_rate_array',true);
 
-		if(empty($matching_rate_array)){
+		if(empty($matching_rate_array)||!is_array($matching_rate_array)){
 			$matching_rate_array = array();
 		}
 

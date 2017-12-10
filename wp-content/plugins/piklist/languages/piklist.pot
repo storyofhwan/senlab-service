@@ -834,5 +834,5 @@ msgstr ""
 #. Plugin URI of the plugin/theme
 #. #-#-#-#-#  plugin.pot (Piklist 0.9.4)  #-#-#-#-#
 #. Author URI of the plugin/theme
-msgid "http://piklist.com"
+msgid "https://piklist.com"
 msgstr ""

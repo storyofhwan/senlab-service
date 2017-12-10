@@ -8,7 +8,7 @@ Flow: Talent Flows
 
 piklist('field',[
 	'type'	=> 'checkbox',
-	'field'	=> 'wish_recruting_type',
+	'field'	=> 'wish_recruiting_type',
 	'label'	=> '희망 채용 유형',
 	'attributes' => [
 		'class'	=> 'text'

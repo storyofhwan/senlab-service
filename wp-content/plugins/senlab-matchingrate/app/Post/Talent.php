@@ -1,39 +1,48 @@
 <?php
-namespace senMatchingRate\Post
+namespace senMatchingRate\Post;
 
 class Talent{
 
-	private $user_id;
+	public $user_id;
 
-	private $id;
+	public $id;
 
 	/**
 	*학생의 정보입력 정도
 	**/
-	private $status;
+	public $status;
 
 
-	private $major;
-	private $location;
-	private $degree;
-	private $school;
+	public $major;
+	public $location;
+	public $degree;
+	public $school;
 
-	private $branch = array();
+	public $branch = array();
 
-	private $edu = array(
+	public $edu = array(
 		'bacelor' => null,
 		'master' => null,
 		'doctor' => null
 	);
 
-	private $exp = array();
+	public $exp = array();
 
-	private $pub = array();
+	public $pub = array();
 
-	private $weightedValues = array();
+	public $weightedValues = array();
 
-	public function __constructor($talent_id){
+	public function __construct($talent_id){
 		$this->id = $talent_id;
+		$this->user_id = get_post_meta($talent_id,'student',true);
+		if(get_post_status($talent_id) == 'publish'){
+			if(get_post_meta($talent_id,'_survey',true)!='Y')
+				$this->status = 'standard';
+			else
+				$this->status = 'advance';
+		}
+		else
+			$this->status = 'basic';
 	}
 	
 }
