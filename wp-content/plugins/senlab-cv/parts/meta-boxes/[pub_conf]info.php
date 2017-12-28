@@ -27,16 +27,15 @@ piklist('field', [
  	]
 ]);
 
-piklist('field',[
-	'type'	=> 'select',
-	'field'	=> 'author_type',
-	'label'	=> '저자구분',
-	'attributes' => [
-		'class'	=> 'text'
-	],
+piklist('field', [
+	'type' => 'radio',
+	'field' => 'author_type',
+	'scope' => 'post_meta',
+	'label' => '저자구분',
 	'choices' => [
-		'lead-author' => '주저자',
-		'co-author' => '공저자',
-		'responsible-author' => '책임저자'
-	]
+		'주저자' => '주저자',
+		'공저자' => '공저자',
+		'책임저자' => '책임저자'
+	],
+	'columns'=> 8
 ]);

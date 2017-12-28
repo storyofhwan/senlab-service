@@ -47,8 +47,9 @@ class SyncMatching{
 			$matching = $this->update_matching($this->post_id, $status, $this->site_id, $this->user_id, $this->opposite_post_id, $this->opposite_user_id);
 
 			//매칭이라면 opposite user도 업데이트
-			if($matching!=false)
+			if($matching!=false){
 				$this->update_matching($this->opposite_post_id, $status, $this->site_id, $this->opposite_user_id, $this->post_id, $this->user_id);
+			}
 		}
 		
 	}

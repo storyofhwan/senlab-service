@@ -48,8 +48,8 @@ class Match
 	}
 
 	public function updateMatching(){
-		if($this->status == 'active') { update_user_meta($this->user_id,'matching_test','active'); return $this->addMatching(); }
-		else if($this->status == 'inactive') { update_user_meta($this->user_id,'matching_test','inactive'); return $this->removeMatching();}
+		if($this->status == 'active') { return $this->addMatching(); }
+		else if($this->status == 'inactive') { return $this->removeMatching();}
 	}
 
 
@@ -67,8 +67,6 @@ class Match
 			}
 		}
 		
-		
-
 		return false;
 	}
 

@@ -9,13 +9,13 @@ piklist('field', [
 	'type' => 'text',
 	'field' => 'post_title',
 	'scope' => 'post',
-	'label' => '직함'
+	'label' => '회사 혹은 연구소',
 ]);
 
 piklist('field', [
 	'type' => 'text',
-	'field' => 'company',
-	'label' => '회사 혹은 연구소'
+	'field' => 'designation',
+	'label' => '직함',
 ]);
 
 piklist('field', [

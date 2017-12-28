@@ -34,12 +34,12 @@ class Calculater
 	}
 
 	private function basic(){
-		$rate = 50+1;
+		$rate = ($this->career->id)*($this->career->id)*($this->career->id)*($this->career->id)%99;
 		return (int)$rate;
 	}
 
 	private function standard(){
-		$rate = ($this->career->id)*($this->career->id)%100+2;
+		$rate = (($this->career->id)*($this->career->id)+90)%100;
 		//$rate = 10;
 		return $rate;
 	}

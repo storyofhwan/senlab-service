@@ -97,3 +97,36 @@ function add_roles_on_plugin_activation() {
  	add_role( 'student', '학생');
     add_role('manager','인사담당자');
 }register_activation_hook( __FILE__, 'add_roles_on_plugin_activation' );
+
+// want post type 추가
+add_action('init',function(){
+	$labels = [
+		'name' 			=> '면접 요청',
+		'singular_name' => '면접 요청',
+		'add_new'		=> '새 면접 요청',
+		'menu_name'		=> '면접 요청 관리',
+		'edit'			=> '면접 요청 정보 수정',
+		'edit_item'		=> '면접 요청 정보 수정',
+		'new_item'		=> '면접 요청 추가',
+		'view'			=> '면접 요청 정보 보기',
+		'search_items'	=> '면접 요청 검색',
+		'not_found'		=> '면접 요청이 없습니다',
+		'not_found_in_trash'	=> '면접 요청이 없습니다'
+	];
+
+	$arg = [
+		'labels' 				=> $labels,
+		'description'			=> '다양한 면접 요청의 상세정보가 저장된 post입니다',
+		'public'				=> true,
+		'show_ui'				=> true,
+		'show_in_menu'			=> true,
+		'show_in_nav_menus'		=> false,
+		'exclude_from_search'	=> true,
+		'has_archive'			=> false,
+		'capability_type'		=> 'post',
+		'menu_position'			=> 8,
+		'supports'				=> ['title',]
+	];
+
+	register_post_type('want',$arg);
+});

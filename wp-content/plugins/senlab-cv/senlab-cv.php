@@ -100,26 +100,31 @@ add_action('updated_postmeta','update_manager_meta_career',10,4);
 function edit_child_post(){
 	$id = empty($_POST['id'])?"":$_POST['id'];
 	$post_type = $_POST['post_type'];
+	$output_keys = [];
 	$output =[];
+
+	//정보 수정
 	if($_POST['behave']=='edit'&&!empty($id)){
 		switch($post_type){
-			case 'recruiting';
-			$output['title'] = get_the_title($id);
-			$output['recruiting_type'] = get_post_meta($id, 'recruiting_type',true);
-			$output['major'] = get_post_meta($id, 'major');
-			$output['location'] = get_post_meta($id,'location',true);
-			$output['salary'] = get_post_meta($id,'salary',true);
-			$output['period'] = get_post_meta($id,'period',true);
-			$output['description'] = get_post_meta($id, 'description',true);
-			break;
+			case 'recruiting'; $output_keys = ['recruiting_type'=>true, 'major'=>false, 'location'=>true, 'salary'=>true, 'period'=>true, 'description'=>true]; break;
 
-			case 'exp_work':
-			$output['title'] = get_the_title($id);
-			$output['company'] = get_post_meta($id,'company',true);
-			$output['location'] = get_post_meta($id, 'location',true);
-			$output['period'] = get_post_meta($id, 'period',true);
-			$output['description'] = get_post_meta($id, 'description',true);
-			break;
+			case 'exp_work': $output_keys = ['designation'=>true,'location'=>true, 'period'=>true,'description'=>true]; break;
+
+			case 'exp_research': break;
+
+			case 'pub_paper': $output_keys = ['journal'=>true,'author'=>true,'author_type'=>true]; break;
+
+			case 'pub_conf': $output_keys = ['conference'=>true,'author'=>true,'author_type'=>true]; break;
+
+			case 'pub_patent': $output_keys = ['application_number'=>true]; break;
+
+			case 'pub_book': $output_keys = ['publisher'=>true, 'author'=>true, 'publication_date'=>true]; break;
+		}
+
+		$output['title'] = get_the_title($id);
+		foreach($output_keys as $key=>$isarray){
+			if($isarray == true) $output[$key] = get_post_meta($id, $key,true);
+			else $output[$key] = get_post_meta($id, $key);
 		}
 	}
 	else if($_POST['behave']=='delete'){
@@ -127,6 +132,10 @@ function edit_child_post(){
 			$career_id = get_post_meta($id,'career',true);
 			delete_post_meta($career_id,$post_type,$id);
 			wp_delete_post($id);
+
+			if(empty( array_filter( get_post_meta($career_id, $post_type) ) ) ){
+				update_post_meta($career_id, '_rec', "N");
+			}
 
 			$output['id'] = $id;
 			$output['career_id'] = $career_id;
@@ -136,7 +145,8 @@ function edit_child_post(){
 			$talent_id = get_post_meta($id,'talent',true);
 			delete_post_meta($talent_id,$post_type,$id);
 			wp_delete_post($id);
-			if(empty(get_post_meta($talent_id,$post_type))){
+
+			if( empty( array_filter( get_post_meta($talent_id,$post_type) ) ) ){
 				switch($post_type){
 					case "exp_work":
 					case "exp_research":

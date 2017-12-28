@@ -1,6 +1,6 @@
 <?php
 /*
-Title: Talent Edit - Work
+Title: Talent Add - Research
 Method: post
 Logged in: true
 Redirect: http://wordpress.dev/s-myinfo
@@ -13,8 +13,8 @@ $talent_id = get_user_meta($user_id,'talent',true);
 piklist('field', array(
 	'type' => 'hidden',
 	'scope' => 'post',
-	'field' => 'ID',
-	'value' => "",
+	'field' => 'post_type',
+	'value' => 'exp_research'
 ));
 
 piklist('field', array(
@@ -36,15 +36,15 @@ piklist('field', [
 	'type' => 'text',
 	'field' => 'post_title',
 	'scope' => 'post',
-	'label' => '회사 혹은 연구소',
+	'label' => '직함',
 	'colunms' => 8
 ]);
 
 piklist('field', [
 	'type' => 'text',
-	'field' => 'designation',
+	'field' => 'company',
 	'scope' => 'post_meta',
-	'label' => '직함',
+	'label' => '회사 혹은 연구소',
 	'colunms' => 8
 ]);
 
@@ -123,3 +123,5 @@ piklist('field', array(
       'wrapper_class' => 'sen-edit-submit-real'
     )
   ));
+
+

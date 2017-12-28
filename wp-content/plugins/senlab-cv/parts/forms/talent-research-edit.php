@@ -1,6 +1,6 @@
 <?php
 /*
-Title: Talent Edit - Work
+Title: Talent Edit - Research
 Method: post
 Logged in: true
 Redirect: http://wordpress.dev/s-myinfo
@@ -36,15 +36,15 @@ piklist('field', [
 	'type' => 'text',
 	'field' => 'post_title',
 	'scope' => 'post',
-	'label' => '회사 혹은 연구소',
+	'label' => '직함',
 	'colunms' => 8
 ]);
 
 piklist('field', [
 	'type' => 'text',
-	'field' => 'designation',
+	'field' => 'company',
 	'scope' => 'post_meta',
-	'label' => '직함',
+	'label' => '회사 혹은 연구소',
 	'colunms' => 8
 ]);
 

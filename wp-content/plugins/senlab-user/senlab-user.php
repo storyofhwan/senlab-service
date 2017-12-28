@@ -24,7 +24,9 @@ function sen_create_new_talent($user_id,$submitted){
 		$postarr['post_author'] = $user_id;
 		$postarr['meta_input'] = [
 			'name' => $submitted['nickname'],
-			'degree' => $submitted['degree']
+			'degree' => $submitted['degree'],
+			'school' => $submitted['school'],
+			''
 		];
 		$post_id = wp_insert_post($postarr);
 
@@ -37,6 +39,11 @@ function sen_create_new_talent($user_id,$submitted){
 			add_post_meta($post_id, '_survey', 'N');
 		}
 	}
+}
+
+add_action('init','sen_mapping_student_departemnt_to_major');
+function sen_mapping_student_departemnt_to_major(){
+	
 }
 
 

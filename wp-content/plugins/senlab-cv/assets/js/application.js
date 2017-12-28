@@ -25,7 +25,6 @@
   		var post_id = $(this).data("postid");
   		var post_info = $(this).data("info");
 
-  		console.log(post_info);
  		$.ajax({
  			url:ajaxObject.ajaxurl,
  			type: 'post',
@@ -40,53 +39,71 @@
  				var data = $.parseJSON(output);
  				var form;
  				var modal;
+
+        function add_more_field_edit(field, data){
+          
+          for(var key in data){
+            var id = "_post_meta_"+field+"_"+key.toString();
+            var selector = '#_post_meta_'+field+'_'+key.toString();
+            var new_form = form.find('#_post_meta_'+field+'_0').parent('.piklist-field-addmore-wrapper').clone(true);
+
+            console.log(form.find(selector));
+            if(form.find(selector).length==0){
+              new_form.find('#_post_meta_'+field+'_0').attr('id',id).val(data[key]);
+              form.find('#_post_meta_'+field+'_0').parents('.piklist-theme-field').append(new_form);
+              console.log(key+":"+data[key]);
+            }
+            else form.find(selector).val(data[key]);
+          }
+        }
+
  				if(post_behave == 'edit'){
  					switch(post_info){
             case 'recruiting':
             modal = $("#cRecruitingEditModal"); form = $("#senlab_cv_career_recruiting_edit");
-            form.children('#_post_ID_0').attr('value',post_id);
-            form.find('#_post_post_title_0').attr('value',data.title);
-            form.find('#_post_meta_recruiting_type_0').attr('value',data.recruiting_type);
-
-            var count = 0;
-            var new_form = form.find('#_post_meta_major_0').parent('.piklist-field-addmore-wrapper').clone(true);
-            data.major.forEach(function(value,key,array1){
-              var major_id = "_post_meta_major_"+count.toString();
-              var major_selector = '#_post_meta_major_'+count.toString();
-              if(count !=0){
-                new_form.find('#_post_meta_major_0').attr('id',major_selector).attr('value',value);
-                form.find('#_post_meta_major_0').parents('.piklist-theme-field').append(new_form);
-              }
-              else form.find(major_selector).attr('value',value);
-              count=count+1;
-              console.log(count);
-            });
-
-            form.find('#_post_meta_location_0').attr('value',data.location);
-            form.find('#_post_meta_period_period_start_date_0').attr('value',data.period.period_start_date);
-            form.find('#_post_meta_period_period_end_date_0').attr('value',data.period.period_end_date);
-            form.find('#_post_meta_salary_salary_min_0').attr('value',data.salary.salary_min);
-            form.find('#_post_meta_salary_salary_max_0').attr('value',data.salary.salary_max);
-            form.find('#_post_meta_description_0').attr('value',data.description);
             break;
-
-
 
  						case 'exp_work':
             modal = $("#workEditModal"); form = $("#senlab_cv_talent_work_edit");
-            form.children('#_post_ID_0').attr('value',post_id);
-            form.find('#_post_post_title_0').attr('value',data.title);
-            form.find('#_post_meta_company_0').attr('value',data.company);
-            form.find('#_post_meta_location_0').attr('value',data.location);
-            form.find('#_post_meta_period_period_start_year_0').val(data.period.period_start_year).change();
-            form.find('#_post_meta_period_period_end_year_0').val(data.period.period_end_year).change();
-            form.find('#_post_meta_period_period_start_month_0').val(data.period.period_start_month).change();
-            form.find('#_post_meta_period_period_end_month_0').val(data.period.period_end_month).change();
-            form.find('#_post_meta_description_0').attr('value',data.description);
             break;
+
+            case 'exp_research':
+            modal = $("#researchEditModal"); form = $("#senlab_cv_talent_research_edit");
+            break;
+
+            case 'pub_paper':
+            modal = $("#paperEditModal"); form = $("#senlab_cv_talent_paper_edit"); break;
+
+            case 'pub_conf':
+            modal = $("#conferenceEditModal"); form = $("#senlab_cv_talent_conference_edit"); break;
+
+            case 'pub_patent':
+            modal = $("#patentEditModal"); form = $("#senlab_cv_talent_patent_edit"); break;
+
+            case 'pub_book' :
+            modal = $("#bookEditModal"); form = $("#senlab_cv_talent_book_edit"); break;
 
  						default: break;
  					}
+
+          form.children('#_post_ID_0').val(post_id);
+          for(var key in data){
+            if(key == 'title') form.find('#_post_post_title_0').val(data[key]);
+            else{
+              var value = data[key];
+              if(value.constructor == Array) {
+                add_more_field_edit(key, value);
+              }
+              else if(value.constructor == Object){
+                for(var sub_key in value){
+                  form.find('#_post_meta_'+key+'_'+sub_key+'_0').val(value[sub_key]);
+                }
+              }
+              else form.find('#_post_meta_'+key+'_0').val(data[key]);
+
+            }
+          }
+            
 
  					modal.find('.btn.sen-delete').data('postid',post_id);
  					modal.find('.btn.sen-delete').data('info',post_info);
